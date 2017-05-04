@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     // When '+' button hit, increase quantity by 1
     public void increment(View view) {
         quantity = quantity + 1;
-        display(quantity);
+        displayQuantity(quantity);
         displayPrice(quantity * 5);
     }
 
@@ -45,20 +45,20 @@ public class MainActivity extends AppCompatActivity {
         if (quantity >= 1) {
             quantity = quantity - 1;
         } else {}
-        display(quantity);
+        displayQuantity(quantity);
         displayPrice(quantity * 5);
     }
     // 'Reset' button, sets quantity back to 0
     public void reset(View view){
         quantity = 0;
-        display(quantity);
+        displayQuantity(quantity);
         displayPrice(quantity);
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void display(int number) {
+    private void displayQuantity(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
