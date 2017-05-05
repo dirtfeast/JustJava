@@ -26,17 +26,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     int quantity = 0;
+    String status = "pending";
 
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        int price = calculatePrice(quantity);
+        status = createOrderSummary(price);
+        displayStatus(status);
+    }
+
+    // Calculates the price of the order based on quantity
+    // @return the price
+    private int calculatePrice(int qnt) {
+        return qnt * 5;
+    }
+
+    public String createOrderSummary(int price) {
+        String summary = "Name: Dan W\nQuantity: " + quantity + "\nTotal: $" + price + "\nThank You!";
+        return summary;
     }
 
     // When '+' button hit, increase quantity by 1
     public void increment(View view) {
         quantity = quantity + 1;
-        display(quantity);
+        displayQuantity(quantity);
         displayPrice(quantity * 5);
     }
 
@@ -45,29 +60,34 @@ public class MainActivity extends AppCompatActivity {
         if (quantity >= 1) {
             quantity = quantity - 1;
         } else {}
-        display(quantity);
+        displayQuantity(quantity);
         displayPrice(quantity * 5);
     }
     // 'Reset' button, sets quantity back to 0
     public void reset(View view){
         quantity = 0;
-        display(quantity);
+        status = "pending";
+        displayQuantity(quantity);
         displayPrice(quantity);
+        displayStatus(status);
     }
 
-    /**
-     * This method displays the given quantity value on the screen.
-     */
-    private void display(int number) {
+    // Method to display quantity (number of cups) in TextView quantity_text_view
+    private void displayQuantity(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
 
-    /**
-     * This method displays the given price on the screen.
-     */
+    // Method to display total price in TextView price_text_view
     private void displayPrice(int number) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+    }
+
+    // Method to display order status in TextView status_text_view
+    private void displayStatus(String s) {
+        TextView statusTextView = (TextView) findViewById(R.id.status_text_view);
+        statusTextView.setText(s);
+
     }
 }
