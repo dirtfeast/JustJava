@@ -26,11 +26,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     int quantity = 0;
+    String status = "pending";
 
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        status = "Thank You!";
+        displayStatus(status);
     }
 
     // When '+' button hit, increase quantity by 1
@@ -51,8 +54,10 @@ public class MainActivity extends AppCompatActivity {
     // 'Reset' button, sets quantity back to 0
     public void reset(View view){
         quantity = 0;
+        status = "pending";
         displayQuantity(quantity);
         displayPrice(quantity);
+        displayStatus(status);
     }
 
     /**
@@ -63,11 +68,16 @@ public class MainActivity extends AppCompatActivity {
         quantityTextView.setText("" + number);
     }
 
-    /**
-     * This method displays the given price on the screen.
-     */
+    // Method to display total price in TextView price_text_view
     private void displayPrice(int number) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+    }
+
+    // Method to display order status in TextView status_text_view
+    private void displayStatus(String s) {
+        TextView statusTextView = (TextView) findViewById(R.id.status_text_view);
+        statusTextView.setText(s);
+
     }
 }
