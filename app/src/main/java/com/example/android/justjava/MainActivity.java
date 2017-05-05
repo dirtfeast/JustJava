@@ -36,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
         displayStatus(status);
     }
 
+    // Calculates the price of the order based on quantity
+    // @return the price
+    private int calculatePrice(int quantity) {
+        int price = quantity * 5;
+        return price;
+    }
+
     // When '+' button hit, increase quantity by 1
     public void increment(View view) {
         quantity = quantity + 1;
