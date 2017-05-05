@@ -32,15 +32,20 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        status = "Thank You!";
+        int price = calculatePrice(quantity);
+        status = createOrderSummary(price);
         displayStatus(status);
     }
 
     // Calculates the price of the order based on quantity
     // @return the price
-    private int calculatePrice(int quantity) {
-        int price = quantity * 5;
-        return price;
+    private int calculatePrice(int qnt) {
+        return qnt * 5;
+    }
+
+    public String createOrderSummary(int price) {
+        String summary = "Name: Dan W\nQuantity: " + quantity + "\nTotal: $" + price + "\nThank You!";
+        return summary;
     }
 
     // When '+' button hit, increase quantity by 1
@@ -67,9 +72,7 @@ public class MainActivity extends AppCompatActivity {
         displayStatus(status);
     }
 
-    /**
-     * This method displays the given quantity value on the screen.
-     */
+    // Method to display quantity (number of cups) in TextView quantity_text_view
     private void displayQuantity(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
