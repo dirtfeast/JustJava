@@ -11,9 +11,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="4dp"
         android:text="Quantity"
-        android:textAllCaps="true" />
+        android:textAllCaps="true"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="4dp"
+        android:background="#000000" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -43,20 +50,36 @@
             android:text="+"
             android:textSize="16sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:fontFamily="monospace"
+            android:text="Coffees"
+            android:textAllCaps="true"
+            android:textSize="14sp" />
+
     </LinearLayout>
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:layout_marginTop="16dp"
-        android:text="Price"
-        android:textAllCaps="true" />
+        android:text="Order Summary"
+        android:textAllCaps="true"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="6dp"
+        android:background="#000000" />
 
     <TextView
         android:id="@+id/price_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="$0.00"
         android:textColor="@android:color/black"
         android:textSize="16sp" />
@@ -70,7 +93,6 @@
         android:textColor="@android:color/black"
         android:textSize="16sp" />
 
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -80,11 +102,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:background="#000000"
             android:onClick="submitOrder"
             android:text="Order"
-            android:textColor="#FFFFFF"
-            android:background="#000000"
-            />
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/reset"
@@ -97,6 +118,5 @@
             android:text="Reset"
             android:textColor="#FFFFFF" />
     </LinearLayout>
-
 
 </LinearLayout>
