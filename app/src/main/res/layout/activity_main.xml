@@ -63,6 +63,31 @@
 
     <TextView
         android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="16dp"
+        android:text="Toppings"
+        android:textAllCaps="true"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="6dp"
+        android:background="#000000" />
+
+    <CheckBox
+        android:id="@+id/whipped_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="Whipped Cream"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textSize="14sp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:layout_marginTop="16dp"
