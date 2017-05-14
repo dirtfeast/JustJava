@@ -5,12 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.lang.reflect.Method;
 import java.text.NumberFormat;
 
 import static android.R.attr.y;
+import static com.example.android.justjava.R.id.name_edit_text;
 
 //App that displays an form to order coffees
 public class MainActivity extends AppCompatActivity {
@@ -41,6 +43,18 @@ public class MainActivity extends AppCompatActivity {
     private boolean queryWCream() {
         CheckBox wcCheckBox = (CheckBox) findViewById(R.id.whipped_checkbox);
         return wcCheckBox.isChecked();
+    }
+
+    // Method to get contents of Name field
+    private String queryName() {
+        EditText nameField = (EditText) findViewById(R.id.name_edit_text);
+        return nameField.getText().toString();
+    } // Close method queryName()
+
+    // Method to clear contents of Name field
+    private void clearName() {
+        EditText nameField = (EditText) findViewById(R.id.name_edit_text);
+        nameField.setText("");
     }
 
     // Method Chocolate Goo checkbox true/false
@@ -89,10 +103,10 @@ public class MainActivity extends AppCompatActivity {
     // Method composes string with Name, Quantity, Total and Thank You
     // @returns string 'summary'
     public String createOrderSummary(int price) {
-        String summary = "Name: Dan W";
+        String summary = "Name: " + queryName();
         summary += "\nQuantity: " + quantity;
         summary += "\nAdd whipped cream? " + queryWCream();
-        summary += "Add cholate goo? " + queryChoco();
+        summary += "Add chocolate goo? " + queryChoco();
         summary += "\nTotal: $" + price;
         summary += "\nThank You!";
         return summary;
@@ -124,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         coffeePrice = origCoffeePrice;
         uncheckWCream();
         uncheckChoco();
+        clearName();
         displayQuantity(quantity);
         displayPrice(quantity);
         displayStatus(status);
