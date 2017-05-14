@@ -3,6 +3,8 @@ package com.example.android.justjava;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.lang.reflect.Method;
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     // Global variables
     int quantity = 0;
+    int origCoffeePrice = 4;
+    int coffeePrice = 4;
+    int wcPrice = 1;
     String status = "pending";
 
     // Method called when the order button is clicked
@@ -28,12 +33,37 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         // status = createOrderSummary(calculatePrice());
         displayStatus(createOrderSummary(calculatePrice()));
+        disableWCCheckBox();
     }
+
+    // Method whipped cream checkbox true/false
+    private boolean queryWCream() {
+        CheckBox wcCheckBox = (CheckBox) findViewById(R.id.whipped_checkbox);
+        return wcCheckBox.isChecked();
+//        Boolean checkBoxState = wcCheckBox.isChecked();
+//        return checkBoxState;
+    }
+
+    // Method to force uncheck Whipped Cream checkbox
+    private void uncheckWCream() {
+        CheckBox wcCheckBox = (CheckBox) findViewById(R.id.whipped_checkbox);
+        wcCheckBox.setChecked(false);
+        wcCheckBox.setEnabled(true);
+    }
+
+    // Method to disable (grey out) Whipped Cream checkbox once order finalized
+    private void disableWCCheckBox() {
+        CheckBox wcCheckBox = (CheckBox) findViewById(R.id.whipped_checkbox);
+        wcCheckBox.setEnabled(false);
+        }
 
     // Method calculates the price of the order based on quantity
     // @return the price
     private int calculatePrice() {
-        return quantity * 5;
+        if (queryWCream() == true)
+        {coffeePrice += wcPrice; }
+        else { coffeePrice = origCoffeePrice; }
+        return quantity * coffeePrice;
     }
 
     // Method composes string with Name, Quantity, Total and Thank You
@@ -41,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     public String createOrderSummary(int price) {
         String summary = "Name: Dan W";
         summary += "\nQuantity: " + quantity;
+        summary += "\nAdd whipped cream? " + queryWCream();
         summary += "\nTotal: $" + price;
         summary += "\nThank You!";
         return summary;
@@ -62,10 +93,13 @@ public class MainActivity extends AppCompatActivity {
         displayQuantity(quantity);
         displayPrice(calculatePrice());
     }
-    // Method for 'Reset' button, sets quantity back to 0 and status to pending
+    // Method for 'Reset' button
+    // Sets quantity to 0, coffee price to original, uncheck Whipped Cream, and status to pending
     public void reset(View view){
         quantity = 0;
         status = "pending";
+        coffeePrice = origCoffeePrice;
+        uncheckWCream();
         displayQuantity(quantity);
         displayPrice(quantity);
         displayStatus(status);
