@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
+    } // Close method onCreate()
 
     // Global variables
     int quantity = 0;
@@ -34,14 +34,19 @@ public class MainActivity extends AppCompatActivity {
         // status = createOrderSummary(calculatePrice());
         displayStatus(createOrderSummary(calculatePrice()));
         disableWCCheckBox();
+        disableChocoCheckBox();
     }
 
     // Method whipped cream checkbox true/false
     private boolean queryWCream() {
         CheckBox wcCheckBox = (CheckBox) findViewById(R.id.whipped_checkbox);
         return wcCheckBox.isChecked();
-//        Boolean checkBoxState = wcCheckBox.isChecked();
-//        return checkBoxState;
+    }
+
+    // Method Chocolate Goo checkbox true/false
+    private boolean queryChoco() {
+        CheckBox chocoCheckBox = (CheckBox) findViewById(R.id.choco_checkbox);
+        return chocoCheckBox.isChecked();
     }
 
     // Method to force uncheck Whipped Cream checkbox
@@ -51,20 +56,35 @@ public class MainActivity extends AppCompatActivity {
         wcCheckBox.setEnabled(true);
     }
 
+    // Method to force uncheck Chocolate Goo checkbox
+    private void uncheckChoco() {
+        CheckBox chocoCheckBox = (CheckBox) findViewById(R.id.choco_checkbox);
+        chocoCheckBox.setChecked(false);
+        chocoCheckBox.setEnabled(true);
+    }
+
     // Method to disable (grey out) Whipped Cream checkbox once order finalized
     private void disableWCCheckBox() {
         CheckBox wcCheckBox = (CheckBox) findViewById(R.id.whipped_checkbox);
         wcCheckBox.setEnabled(false);
-        }
+    }
+
+    // Method to disable (grey out) Chocolate Goo checkbox once order finalized
+    private void disableChocoCheckBox() {
+        CheckBox chocoCheckBox = (CheckBox) findViewById(R.id.choco_checkbox);
+        chocoCheckBox.setEnabled(false);
+    }
 
     // Method calculates the price of the order based on quantity
     // @return the price
     private int calculatePrice() {
-        if (queryWCream() == true)
-        {coffeePrice += wcPrice; }
-        else { coffeePrice = origCoffeePrice; }
+        if (queryWCream() == true) {
+            coffeePrice += wcPrice;
+        } else {
+            coffeePrice = origCoffeePrice;
+        }
         return quantity * coffeePrice;
-    }
+    } // Close method calculatePrice()
 
     // Method composes string with Name, Quantity, Total and Thank You
     // @returns string 'summary'
@@ -72,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         String summary = "Name: Dan W";
         summary += "\nQuantity: " + quantity;
         summary += "\nAdd whipped cream? " + queryWCream();
+        summary += "Add cholate goo? " + queryChoco();
         summary += "\nTotal: $" + price;
         summary += "\nThank You!";
         return summary;
@@ -89,17 +110,20 @@ public class MainActivity extends AppCompatActivity {
     public void decrement(View view) {
         if (quantity >= 1) {
             quantity = quantity - 1;
-        } else {}
+        } else {
+        }
         displayQuantity(quantity);
         displayPrice(calculatePrice());
     }
+
     // Method for 'Reset' button
     // Sets quantity to 0, coffee price to original, uncheck Whipped Cream, and status to pending
-    public void reset(View view){
+    public void reset(View view) {
         quantity = 0;
         status = "pending";
         coffeePrice = origCoffeePrice;
         uncheckWCream();
+        uncheckChoco();
         displayQuantity(quantity);
         displayPrice(quantity);
         displayStatus(status);
