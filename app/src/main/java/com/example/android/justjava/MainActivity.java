@@ -1,5 +1,8 @@
 package com.example.android.justjava;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,11 +10,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Method;
 import java.text.NumberFormat;
 
+import static android.R.attr.duration;
 import static android.R.attr.y;
+import static android.content.Intent.ACTION_SENDTO;
 import static com.example.android.justjava.R.id.name_edit_text;
 
 //App that displays an form to order coffees
@@ -30,13 +36,35 @@ public class MainActivity extends AppCompatActivity {
     int chocoPrice = 2;
     String status = "pending";
 
+    // Global toast messages
+    CharSequence minusText = "Too few coffees!";
+    CharSequence plusText = "Too many coffees!";
+
     // Method called when the order button is clicked
     // calculatePrice() > createOrderSummary() > displayStatus()
     public void submitOrder(View view) {
-        displayStatus(createOrderSummary(calculatePrice()));
+        // displayStatus(createOrderSummary(calculatePrice()));
+        String oSummary = createOrderSummary(calculatePrice());
+        displayStatus(oSummary);
         disableWCCheckBox();
         disableChocoCheckBox();
+        emailOrder(oSummary);
     } // Close method submitOrder()
+
+    public void emailOrder(String order) {
+        // String[] addresses = new String[2];
+        // addresses[0] = "dirtfeast@gmail.com";
+        // addresses[1] = "dirtfeast@gmail.com";
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setType("*/*");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee Order");
+        intent.putExtra(Intent.EXTRA_TEXT, order);
+        intent.putExtra(Intent.EXTRA_EMAIL, "dirtfeast@gmail.com");
+        // intent.setData(Uri.parse("mailto:"));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
 
     // Method whipped cream checkbox true/false
     private boolean queryWCream() {
@@ -119,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
     public void increment(View view) {
         if (quantity < 10) {
             quantity += 1;
+        } else {
+            Toast.makeText(this, plusText, Toast.LENGTH_SHORT).show();
+            return;
         }
         displayQuantity(quantity);
         displayPrice(calculatePrice());
@@ -129,6 +160,9 @@ public class MainActivity extends AppCompatActivity {
     public void decrement(View view) {
         if (quantity >= 1) {
             quantity -= 1;
+        } else {
+            Toast.makeText(this, minusText, Toast.LENGTH_SHORT).show();
+            return;
         }
         displayQuantity(quantity);
         displayPrice(calculatePrice());
