@@ -25,25 +25,24 @@ public class MainActivity extends AppCompatActivity {
 
     // Global variables
     int quantity = 0;
-    int origCoffeePrice = 4;
     int coffeePrice = 4;
     int wcPrice = 1;
+    int chocoPrice = 2;
     String status = "pending";
 
     // Method called when the order button is clicked
     // calculatePrice() > createOrderSummary() > displayStatus()
     public void submitOrder(View view) {
-        // status = createOrderSummary(calculatePrice());
         displayStatus(createOrderSummary(calculatePrice()));
         disableWCCheckBox();
         disableChocoCheckBox();
-    }
+    } // Close method submitOrder()
 
     // Method whipped cream checkbox true/false
     private boolean queryWCream() {
         CheckBox wcCheckBox = (CheckBox) findViewById(R.id.whipped_checkbox);
         return wcCheckBox.isChecked();
-    }
+    } // Close method queryWCream()
 
     // Method to get contents of Name field
     private String queryName() {
@@ -51,17 +50,17 @@ public class MainActivity extends AppCompatActivity {
         return nameField.getText().toString();
     } // Close method queryName()
 
-    // Method to clear contents of Name field
+    // Method to clear contents of Name field upon reset
     private void clearName() {
         EditText nameField = (EditText) findViewById(R.id.name_edit_text);
         nameField.setText("");
-    }
+    } // Close method clearName()
 
     // Method Chocolate Goo checkbox true/false
     private boolean queryChoco() {
         CheckBox chocoCheckBox = (CheckBox) findViewById(R.id.choco_checkbox);
         return chocoCheckBox.isChecked();
-    }
+    } //Close method queryChoco()
 
     // Method to force uncheck Whipped Cream checkbox
     private void uncheckWCream() {
@@ -90,14 +89,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Method calculates the price of the order based on quantity
+    // Also factor in toppings
     // @return the price
     private int calculatePrice() {
+        int basePrice = coffeePrice;
         if (queryWCream() == true) {
-            coffeePrice += wcPrice;
-        } else {
-            coffeePrice = origCoffeePrice;
+            basePrice += wcPrice;
         }
-        return quantity * coffeePrice;
+
+        if (queryChoco() == true) {
+            basePrice += chocoPrice;
+        }
+        return basePrice * quantity;
     } // Close method calculatePrice()
 
     // Method composes string with Name, Quantity, Total and Thank You
@@ -106,15 +109,17 @@ public class MainActivity extends AppCompatActivity {
         String summary = "Name: " + queryName();
         summary += "\nQuantity: " + quantity;
         summary += "\nAdd whipped cream? " + queryWCream();
-        summary += "Add chocolate goo? " + queryChoco();
+        summary += "\nAdd chocolate goo? " + queryChoco();
         summary += "\nTotal: $" + price;
         summary += "\nThank You!";
         return summary;
-    }
+    } // Close createOrderSummary()
 
     // Method increases global 'quantity' by 1 when '+' button hit
     public void increment(View view) {
-        quantity = quantity + 1;
+        if (quantity < 10) {
+            quantity += 1;
+        }
         displayQuantity(quantity);
         displayPrice(calculatePrice());
     }
@@ -123,8 +128,7 @@ public class MainActivity extends AppCompatActivity {
     // If 'quantity' == 0 leaves it at 0
     public void decrement(View view) {
         if (quantity >= 1) {
-            quantity = quantity - 1;
-        } else {
+            quantity -= 1;
         }
         displayQuantity(quantity);
         displayPrice(calculatePrice());
@@ -135,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
     public void reset(View view) {
         quantity = 0;
         status = "pending";
-        coffeePrice = origCoffeePrice;
         uncheckWCream();
         uncheckChoco();
         clearName();
@@ -154,11 +157,12 @@ public class MainActivity extends AppCompatActivity {
     private void displayPrice(int number) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
+    } // Close method displayPrice()
 
     // Method displays order status in TextView status_text_view
     private void displayStatus(String s) {
         TextView statusTextView = (TextView) findViewById(R.id.status_text_view);
         statusTextView.setText(s);
-    }
-}
+    } // Close method displayStatus()
+
+} // Close class MainActivity

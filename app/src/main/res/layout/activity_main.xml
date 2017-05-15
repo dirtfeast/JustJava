@@ -13,29 +13,14 @@
         android:padding="8dp"
         tools:context=".MainActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:text="Hello"
-            android:textAllCaps="true"
-            android:textSize="18sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="4dp"
-            android:background="#000000" />
-
         <EditText
+            android:id="@+id/name_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/name_edit_text"
-            android:inputType="text"
             android:hint=" Enter Name"
-            android:textSize="18sp"
-            android:textColor="#1111FF"
-            />
+            android:inputType="textCapWords"
+            android:layout_marginBottom="4dp"
+            android:textSize="18sp" />
 
 
         <TextView
@@ -121,7 +106,6 @@
             android:paddingLeft="24dp"
             android:text="Chocolate Goo"
             android:textSize="16sp" />
-
 
 
         <TextView
