@@ -2,9 +2,11 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- Customize override parent theme -->
+        <!-- BROWN 500 -->
+        <item name="colorPrimary">#795548</item>
+        <!-- BROWN 700 -->
+        <item name="colorPrimaryDark">#5D4037</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
@@ -21,20 +23,22 @@
         <!-- Horizontal Rule -->
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
-        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
         <item name="android:background">#000000</item>
     </style>
 
     <style name="button_inc_dec">
-        <item name="android:layout_width">42dp</item>
-        <item name="android:layout_height">42dp</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">#795548</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 
     <style name="checkbox_topping">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingLeft">20dp</item>
         <item name="android:textSize">16sp</item>
     </style>
 
