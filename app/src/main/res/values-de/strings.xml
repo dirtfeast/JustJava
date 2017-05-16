@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Just Java</string>
+    <string name="button_order">Bestellen</string>
+    <string name="button_reset">Neu</string>
+    <string name="choco_goo">Schokolade</string>
+    <string name="coffees">Kaffees</string>
+    <string name="enter_name">Name Eintragen</string>
+    <string name="order_pending">ausstehend</string>
+    <string name="order_summary">Bestellübersicht</string>
+    <string name="title_quantity">Anzahl</string>
+    <string name="title_toppings">Überzug</string>
+    <string name="whipped_cream">Schlagsahne</string>
+</resources>

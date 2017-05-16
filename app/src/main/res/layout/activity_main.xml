@@ -15,39 +15,31 @@
 
         <EditText
             android:id="@+id/name_edit_text"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint=" Enter Name"
-            android:inputType="textCapWords"
             android:layout_marginBottom="4dp"
+            android:hint="@string/enter_name"
+            android:inputType="textCapWords"
             android:textSize="18sp" />
 
-
+        <!-- QUANTITY -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:text="Quantity"
-            android:textAllCaps="true"
-            android:textSize="16sp" />
+            style="@style/header"
+            android:text="@string/title_quantity" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="4dp"
-            android:background="#000000" />
+        <!-- Horizontal Rule -->
+        <View style="@style/hr" />
 
+        <!-- Begin nested layout for -/+ buttons -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="42dp"
-                android:layout_height="42dp"
+                style="@style/button_inc_dec"
                 android:onClick="decrement"
-                android:text="-"
-                android:textSize="16sp" />
+                android:text="-" />
 
             <TextView
                 android:id="@+id/quantity_text_view"
@@ -59,69 +51,46 @@
                 android:textSize="16sp" />
 
             <Button
-                android:layout_width="42dp"
-                android:layout_height="42dp"
+                style="@style/button_inc_dec"
                 android:onClick="increment"
-                android:text="+"
-                android:textSize="16sp" />
+                android:text="+" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:fontFamily="monospace"
-                android:text="Coffees"
+                android:text="@string/coffees"
                 android:textAllCaps="true"
                 android:textSize="14sp" />
-
         </LinearLayout>
+        <!-- End nested layout for -/+ buttons -->
 
+        <!-- TOPPINGS -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="4dp"
-            android:layout_marginTop="16dp"
-            android:text="Toppings"
-            android:textAllCaps="true"
-            android:textSize="18sp" />
+            style="@style/header"
+            android:text="@string/title_toppings" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="6dp"
-            android:background="#000000" />
+        <!-- Horizontal Rule -->
+        <View style="@style/hr" />
 
         <CheckBox
             android:id="@+id/whipped_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="24dp"
-            android:text="Whipped Cream"
-            android:textSize="16sp" />
+            style="@style/checkbox_topping"
+            android:text="@string/whipped_cream" />
 
         <CheckBox
             android:id="@+id/choco_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="24dp"
-            android:text="Chocolate Goo"
-            android:textSize="16sp" />
+            style="@style/checkbox_topping"
+            android:text="@string/choco_goo" />
 
-
+        <!-- ORDER SUMMARY -->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginTop="16dp"
-            android:text="Order Summary"
-            android:textAllCaps="true"
-            android:textSize="18sp" />
+            style="@style/header"
+            android:text="@string/order_summary" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="6dp"
-            android:background="#000000" />
+        <!-- Horizontal Rule -->
+        <View style="@style/hr" />
 
         <TextView
             android:id="@+id/price_text_view"
@@ -136,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="pending"
+            android:text="@string/order_pending"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
@@ -151,7 +120,7 @@
                 android:layout_marginTop="16dp"
                 android:background="#000000"
                 android:onClick="submitOrder"
-                android:text="Order"
+                android:text="@string/button_order"
                 android:textColor="#FFFFFF" />
 
             <Button
@@ -162,7 +131,7 @@
                 android:layout_marginTop="16dp"
                 android:background="#EE0000"
                 android:onClick="reset"
-                android:text="Reset"
+                android:text="@string/button_reset"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
 
