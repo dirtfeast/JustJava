@@ -17,17 +17,16 @@
             android:id="@+id/name_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint=" Enter Name"
-            android:inputType="textCapWords"
             android:layout_marginBottom="4dp"
+            android:hint="@string/enter_name"
+            android:inputType="textCapWords"
             android:textSize="18sp" />
-
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="Quantity"
+            android:text="@string/title_quantity"
             android:textAllCaps="true"
             android:textSize="16sp" />
 
@@ -70,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:fontFamily="monospace"
-                android:text="Coffees"
+                android:text="@string/coffees"
                 android:textAllCaps="true"
                 android:textSize="14sp" />
 
@@ -81,7 +80,7 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="4dp"
             android:layout_marginTop="16dp"
-            android:text="Toppings"
+            android:text="@string/title_toppings"
             android:textAllCaps="true"
             android:textSize="18sp" />
 
@@ -96,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="24dp"
-            android:text="Whipped Cream"
+            android:text="@string/whipped_cream"
             android:textSize="16sp" />
 
         <CheckBox
@@ -104,16 +103,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="24dp"
-            android:text="Chocolate Goo"
+            android:text="@string/choco_goo"
             android:textSize="16sp" />
-
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:layout_marginTop="16dp"
-            android:text="Order Summary"
+            android:text="@string/order_summary"
             android:textAllCaps="true"
             android:textSize="18sp" />
 
@@ -136,7 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="pending"
+            android:text="@string/order_pending"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
@@ -151,7 +149,7 @@
                 android:layout_marginTop="16dp"
                 android:background="#000000"
                 android:onClick="submitOrder"
-                android:text="Order"
+                android:text="@string/button_order"
                 android:textColor="#FFFFFF" />
 
             <Button
@@ -162,7 +160,7 @@
                 android:layout_marginTop="16dp"
                 android:background="#EE0000"
                 android:onClick="reset"
-                android:text="Reset"
+                android:text="@string/button_reset"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
 

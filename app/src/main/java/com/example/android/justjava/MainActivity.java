@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     int coffeePrice = 4;
     int wcPrice = 1;
     int chocoPrice = 2;
-    String status = "pending";
+    String status = getResources().getString(R.string.order_pending);
 
     // Global toast messages
     CharSequence minusText = "Too few coffees!";
@@ -56,11 +56,9 @@ public class MainActivity extends AppCompatActivity {
         // addresses[0] = "dirtfeast@gmail.com";
         // addresses[1] = "dirtfeast@gmail.com";
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setType("*/*");
+        intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee Order");
         intent.putExtra(Intent.EXTRA_TEXT, order);
-        intent.putExtra(Intent.EXTRA_EMAIL, "dirtfeast@gmail.com");
-        // intent.setData(Uri.parse("mailto:"));
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
