@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
     int coffeePrice = 4;
     int wcPrice = 1;
     int chocoPrice = 2;
-    String status = getResources().getString(R.string.order_pending);
+    // String status = getResources().getString(R.string.order_pending);
+    String status = "pending";
 
     // Global toast messages
     CharSequence minusText = "Too few coffees!";
